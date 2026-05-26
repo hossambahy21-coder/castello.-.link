@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بطاقة التهنئة الخاصة بك - دهانات كاستيللو</title>
+    <title>بطاقة التهنئة - دهانات كاستيللو</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap');
         
         body {
             font-family: 'Cairo', sans-serif;
@@ -26,42 +26,23 @@
             text-align: center;
         }
 
-        /* حاوية الصورة والاسم */
-        .card-wrapper {
-            position: relative;
+        #greetingCardArea {
+            display: block; /* الصورة تظهر فوراً */
+            margin-bottom: 25px;
+        }
+
+        /* تنسيق الصورة النهائية التي تظهر للمستخدم */
+        #finalImagePreview {
             width: 100%;
             max-width: 500px;
-            margin: 0 auto 20px auto;
             border-radius: 12px;
-            overflow: hidden;
             box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-        }
-
-        .card-wrapper img {
-            width: 100%;
             display: block;
-        }
-
-        /* التحكم في مكان ظهور اسم العميل على الصورة بشكل دقيق */
-        .client-name {
-            position: absolute;
-            bottom: 22%; /* لتكون في الفراغ المناسب تماماً فوق جملة شركاء النجاح */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 85%;
-            text-align: center;
-            font-size: 26px;
-            font-weight: bold;
-            color: #d4af37; /* اللون الذهبي المتناسق مع تفاصيل الصورة */
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
-            pointer-events: none;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            margin: 0 auto;
         }
 
         .action-btns {
-            margin-top: 15px;
+            margin-top: 20px;
         }
 
         button {
@@ -72,17 +53,16 @@
             border: none;
             border-radius: 25px;
             cursor: pointer;
-            margin: 5px;
             transition: all 0.3s ease;
         }
 
-        .download-btn {
+        .share-btn {
             background-color: #d4af37;
             color: #1a0510;
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
         }
 
-        .download-btn:hover {
+        .share-btn:hover {
             background-color: #f1c40f;
         }
 
@@ -90,10 +70,19 @@
             background-color: rgba(255, 255, 255, 0.1);
             color: white;
             border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-right: 10px;
         }
 
         .back-btn:hover {
             background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* رسالة انتظار خفيفة */
+        #loadingMessage {
+            color: #d4af37;
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 20px;
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -102,44 +91,80 @@
 
     <div class="container">
         
-        <div class="card-wrapper" id="greetingCard">
-            <img src="https://i.ibb.co/6RbyV5rN/Whats-App-Image-2026-05-26-at-6-08-10-AM.jpg" alt="Castello Eid Greeting" crossorigin="anonymous">
-            <div class="client-name" id="displayName">جاري تحميل الاسم...</div>
+        <div id="loadingMessage">جاري تجهيز تهنئة كاستيللو باسمكم الكريم...</div>
+
+        <div id="greetingCardArea">
+            <div id="finalImagePreviewContainer">
+                </div>
         </div>
 
         <div class="action-btns">
-            <button class="download-btn" onclick="downloadImage()">تحميل بطاقتك</button>
-            <button class="back-btn" onclick="window.location.href='index.html'">إنشاء اسم جديد</button>
+            <button class="back-btn" onclick="window.location.href='index.html'">إنشاء تهنئة جديدة</button>
         </div>
 
     </div>
 
+    <div style="position: fixed; top: -10000px; left: -10000px; overflow: hidden;">
+        <div id="greetingCardTemplate" style="position: relative; width: 1200px; height: 1200px;">
+            <img src="https://i.ibb.co/6RbyV5rN/Whats-App-Image-2026-05-26-at-6-08-10-AM.jpg" id="originalImage" alt="Original Image" crossorigin="anonymous" style="width: 100%; height: 100%; display: block;">
+            
+            <div id="templateDisplayName" style="position: absolute; bottom: 21.5%; left: 50%; transform: translateX(-50%); width: 85%; text-align: center; font-family: 'Cairo', sans-serif; font-size: 68px; font-weight: bold; color: #d4af37; text-shadow: 4px 4px 10px rgba(0, 0, 0, 1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 0 10px;">
+                اسم العميل
+            </div>
+        </div>
+    </div>
+
     <script>
-        // قراءة الاسم من الرابط (URL) عند فتح الصفحة
+        // دالة يتم تنفيذها فوراً عند فتح الصفحة
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             const name = urlParams.get('name');
+            const originalImage = document.getElementById('originalImage');
+            const templateDisplayName = document.getElementById('templateDisplayName');
             
-            if (name) {
-                document.getElementById('displayName').textContent = name;
+            if (!name) {
+                templateDisplayName.textContent = "عميل كاستيللو";
             } else {
-                document.getElementById('displayName').textContent = "عميل كاستيللو";
+                templateDisplayName.textContent = name;
+            }
+
+            // ننتظر تحميل الصورة الأصلية أولاً للتأكد من الدمج الصحيح
+            originalImage.onload = function() {
+                generateMergedImage();
+            };
+            
+            // في حالة كانت الصورة محملة بالفعل في الكاش
+            if (originalImage.complete) {
+                generateMergedImage();
             }
         };
 
-        // دالة تحويل التصميم إلى صورة واحدة وتحميلها
-        function downloadImage() {
-            const card = document.getElementById('greetingCard');
-            const currentName = document.getElementById('displayName').textContent;
+        // دالة دمج الاسم مع الصورة وإخراجها كصورة واحدة
+        function generateMergedImage() {
+            const cardTemplate = document.getElementById('greetingCardTemplate');
+            const imagePreviewContainer = document.getElementById('finalImagePreviewContainer');
+            const loadingMessage = document.getElementById('loadingMessage');
             
-            html2canvas(card, {
+            // تحويل الحاوية المخفية التي تحتوي الصورة والاسم إلى صورة واحدة
+            html2canvas(cardTemplate, {
                 useCORS: true,
-                scale: 2 // لضمان الحفاظ على الجودة العالية للصورة المرفوعة
+                scale: 1 // نستخدم scale:1 للحفاظ على أبعاد الصورة الأصلية (1200x1200px)
             }).then(canvas => {
-                const link = document.createElement('a');
-                link.download = `كاستيللو_تهنئة_${currentName}.png`;
-                link.href = canvas.toDataURL('image/png');
-                link.click();
+                // تحويل الـ Canvas الناتج إلى رابط صورة png
+                const finalImageUrl = canvas.toDataURL('image/png');
+                
+                // إنشاء عنصر صورة جديد (<img>) وعرضه
+                const finalImgElement = document.createElement('img');
+                finalImgElement.src = finalImageUrl;
+                finalImgElement.id = 'finalImagePreview';
+                finalImgElement.alt = 'Castello Eid Greeting - ' + document.getElementById('templateDisplayName').textContent;
+                
+                // استبدال حاوية الدمج المخفية بالصورة المدمجة النهائية
+                imagePreviewContainer.innerHTML = '';
+                imagePreviewContainer.appendChild(finalImgElement);
+                
+                // إخفاء رسالة الانتظار
+                loadingMessage.style.display = 'none';
             });
         }
     </script>
