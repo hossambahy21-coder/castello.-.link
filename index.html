@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إنشاء تهنئة عيد الأضحى - دهانات كاستيللو</title>
+    <title>بطاقة التهنئة - دهانات كاستيللو</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap');
         
         body {
             font-family: 'Cairo', sans-serif;
@@ -14,101 +14,131 @@
             margin: 0;
             padding: 20px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
         }
 
-        .card-input {
-            max-width: 500px;
+        .container {
+            max-width: 600px;
             width: 100%;
             text-align: center;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 40px 30px;
-            border-radius: 15px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .logo-text {
-            color: #d4af37;
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 10px;
+        #finalImagePreview {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            display: block;
+            margin: 0 auto;
         }
 
-        h1 {
-            color: #ffffff;
-            font-size: 1.6rem;
-            margin-bottom: 20px;
+        .action-btns {
+            margin-top: 20px;
         }
 
-        p {
-            color: #ccb3c2;
-            font-size: 1rem;
-            margin-bottom: 30px;
-        }
-
-        input[type="text"] {
-            width: 85%;
-            padding: 15px 20px;
-            font-size: 16px;
-            border: 2px solid #8a1538;
-            border-radius: 30px;
-            background-color: #fff;
-            color: #333;
-            outline: none;
-            text-align: center;
+        button {
             font-family: 'Cairo', sans-serif;
-            margin-bottom: 20px;
-        }
-
-        input[type="text"]:focus {
-            border-color: #d4af37;
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-        }
-
-        .submit-btn {
-            background-color: #8a1538;
-            color: white;
-            border: none;
-            padding: 12px 40px;
+            padding: 12px 30px;
             font-size: 16px;
             font-weight: bold;
-            border-radius: 30px;
+            border: none;
+            border-radius: 25px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(138, 21, 56, 0.4);
         }
 
-        .submit-btn:hover {
-            background-color: #a01c43;
-            transform: translateY(-2px);
+        .back-btn {
+            background-color: #d4af37;
+            color: #1a0510;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .back-btn:hover {
+            background-color: #f1c40f;
+        }
+
+        #loadingMessage {
+            color: #d4af37;
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 20px;
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
 
-    <div class="card-input">
-        <div class="logo-text">Castello | دهانات كاستيللو</div>
-        <h1>تهنئة عيد الأضحى المبارك 🐑</h1>
-        <p>مرحباً بكم في منصة تهاني كاستيللو. يرجى كتابة اسمكم الكريم لنقوم بتجهيز بطاقة التهنئة الخاصة بكم فوراً:</p>
+    <div class="container">
         
-        <input type="text" id="clientName" placeholder="اكتب اسمك الثلاثي أو الثنائي هنا..." maxlength="40">
-        <br>
-        <button class="submit-btn" onclick="generateAndGo(WhatsApp Image 2026-05-26 at 6.08.10 AM)">تجهيز الصورة</button>
+        <div id="loadingMessage">جاري دمج اسمكم الكريم مع التهنئة...</div>
+
+        <div id="greetingCardArea">
+            <div id="finalImagePreviewContainer">
+                </div>
+        </div>
+
+        <div class="action-btns">
+            <button class="back-btn" onclick="window.location.href='index.html'">إنشاء تهنئة جديدة</button>
+        </div>
+
+    </div>
+
+    <div style="position: fixed; top: -10000px; left: -10000px; overflow: hidden;">
+        <div id="greetingCardTemplate" style="position: relative; width: 1200px; height: 1200px;">
+            <img src="https://i.ibb.co/6RbyV5rN/Whats-App-Image-2026-05-26-at-6-08-10-AM.jpg" id="originalImage" alt="Original Image" crossorigin="anonymous" style="width: 100%; height: 100%; display: block;">
+            
+            <div id="templateDisplayName" style="position: absolute; bottom: 21.5%; left: 50%; transform: translateX(-50%); width: 85%; text-align: center; font-family: 'Cairo', sans-serif; font-size: 68px; font-weight: bold; color: #d4af37; text-shadow: 4px 4px 10px rgba(0, 0, 0, 1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 0 10px;">
+                اسم العميل
+            </div>
+        </div>
     </div>
 
     <script>
-        function generateAndGo() {
-            const name = document.getElementById('clientName').value.trim();
-            if (name === "") {
-                alert("من فضلك، قم بكتابة الاسم أولاً!");
-                return;
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const name = urlParams.get('name');
+            const originalImage = document.getElementById('originalImage');
+            const templateDisplayName = document.getElementById('templateDisplayName');
+            
+            if (!name) {
+                templateDisplayName.textContent = "عميل كاستيللو";
+            } else {
+                templateDisplayName.textContent = name;
             }
-            // التوجيه إلى الصفحة الثانية مع تمرير الاسم في الرابط
-            window.location.href = "greeting.html?name=" + encodeURIComponent(name);
+
+            originalImage.onload = function() {
+                generateMergedImage();
+            };
+            
+            if (originalImage.complete) {
+                generateMergedImage();
+            }
+        };
+
+        function generateMergedImage() {
+            const cardTemplate = document.getElementById('greetingCardTemplate');
+            const imagePreviewContainer = document.getElementById('finalImagePreviewContainer');
+            const loadingMessage = document.getElementById('loadingMessage');
+            
+            html2canvas(cardTemplate, {
+                useCORS: true,
+                scale: 1
+            }).then(canvas => {
+                const finalImageUrl = canvas.toDataURL('image/png');
+                
+                const finalImgElement = document.createElement('img');
+                finalImgElement.src = finalImageUrl;
+                finalImgElement.id = 'finalImagePreview';
+                finalImgElement.alt = 'Castello Eid Greeting';
+                
+                imagePreviewContainer.innerHTML = '';
+                imagePreviewContainer.appendChild(finalImgElement);
+                
+                loadingMessage.style.display = 'none';
+            });
         }
     </script>
 
