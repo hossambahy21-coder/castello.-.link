@@ -39,12 +39,6 @@
             font-size: 1.8rem;
         }
 
-        p {
-            color: #e0e0e0;
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-        }
-
         /* تنسيق صندوق الإدخال والأزرار */
         .input-group {
             margin-bottom: 25px;
@@ -114,15 +108,15 @@
         /* تحديد مكان ظهور اسم العميل وتنسيقه فوق الصورة */
         .client-name {
             position: absolute;
-            bottom: 22%; /* يضع الاسم بدقة في المساحة المخصصة فوق جملة شركاء النجاح */
+            bottom: 25%; /* يضع الاسم بدقة فوق جملة "شركاء النجاح" */
             left: 50%;
             transform: translateX(-50%);
             width: 90%;
             text-align: center;
-            font-size: 26px;
+            font-size: 22px;
             font-weight: bold;
-            color: #d4af37; /* لون ذهبي متناسق مع التصميم */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+            color: #d4af37; /* لون ذهبي يتناسب مع التصميم الإضافي */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
             pointer-events: none;
             white-space: nowrap;
             overflow: hidden;
@@ -154,3 +148,50 @@
         </div>
 
         <div class="preview-area" id="previewArea">
+            <div>
+                <div class="card-wrapper" id="greetingCard">
+                    <img src="https://i.ibb.co/v4bN3Wff/castello-eid.jpg" alt="Castello Greeting" crossorigin="anonymous">
+                    <div class="client-name" id="displayName"></div>
+                </div>
+                <button class="download-btn" onclick="downloadImage(WhatsApp Image 2026-05-26 at 6.08.10 AM)">تحميل الصورة</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function generateGreeting() {
+            const nameInput = document.getElementById('userName').value.trim();
+            const previewArea = document.getElementById('previewArea');
+            const displayName = document.getElementById('displayName');
+
+            if (nameInput === "") {
+                alert("من فضلك أدخل اسمك أولاً!");
+                return;
+            }
+
+            // وضع اسم العميل في المكان المخصص
+            displayName.textContent = nameInput;
+            
+            // إظهار منطقة المعاينة بسلاسة
+            previewArea.style.display = 'flex';
+            previewArea.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function downloadImage() {
+            const card = document.getElementById('greetingCard');
+            
+            // تحويل الحاوية (الصورة + الاسم) إلى صورة Canvas واحدة للتحميل
+            html2canvas(card, {
+                useCORS: true, // للسماح بتحميل الصور من سيرفر خارجي دون مشاكل حماية
+                scale: 2 // لزيادة جودة الصورة عند التحميل
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = `كاستيللو_تهنئة_${document.getElementById('userName').value}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        }
+    </script>
+
+</body>
+</html>
