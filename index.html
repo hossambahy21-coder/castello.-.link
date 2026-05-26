@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تهنئة عيد الأضحى المبارك - دهانات كاستيللو</title>
+    <title>تهنئة عيد الأضحى - دهانات كاستيللو</title>
     <style>
-        /* إعدادات الخطوط والخلفية العامة */
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
         
         body {
@@ -15,47 +14,54 @@
             margin: 0;
             padding: 20px;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
         }
 
-        .container {
-            max-width: 600px;
+        .card-input {
+            max-width: 500px;
             width: 100%;
             text-align: center;
             background: rgba(255, 255, 255, 0.05);
-            padding: 30px;
+            padding: 40px 30px;
             border-radius: 15px;
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
             backdrop-filter: blur(4px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        h1 {
+        .logo-placeholder {
             color: #d4af37;
-            margin-bottom: 25px;
-            font-size: 1.8rem;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
         }
 
-        /* تنسيق صندوق الإدخال والأزرار */
-        .input-group {
-            margin-bottom: 25px;
+        h1 {
+            color: #ffffff;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #ccb3c2;
+            font-size: 1rem;
+            margin-bottom: 30px;
         }
 
         input[type="text"] {
-            width: 80%;
-            padding: 12px 20px;
+            width: 85%;
+            padding: 15px 20px;
             font-size: 16px;
             border: 2px solid #8a1538;
-            border-radius: 25px;
+            border-radius: 30px;
             background-color: #fff;
             color: #333;
             outline: none;
             text-align: center;
             font-family: 'Cairo', sans-serif;
-            transition: all 0.3s ease;
+            margin-bottom: 20px;
         }
 
         input[type="text"]:focus {
@@ -63,133 +69,46 @@
             box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
         }
 
-        button {
+        .submit-btn {
             background-color: #8a1538;
             color: white;
             border: none;
-            padding: 12px 30px;
+            padding: 12px 40px;
             font-size: 16px;
             font-weight: bold;
-            border-radius: 25px;
+            border-radius: 30px;
             cursor: pointer;
-            margin-top: 15px;
-            transition: background 0.3s ease;
-            font-family: 'Cairo', sans-serif;
+            transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(138, 21, 56, 0.4);
         }
 
-        button:hover {
+        .submit-btn:hover {
             background-color: #a01c43;
-        }
-
-        /* منطقة عرض الصورة والبطاقة */
-        .preview-area {
-            margin-top: 30px;
-            position: relative;
-            display: none; /* مخفي حتى يكتب العميل اسمه */
-            justify-content: center;
-        }
-
-        /* حاوية الصورة والاسم */
-        .card-wrapper {
-            position: relative;
-            width: 100%;
-            max-width: 500px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-        }
-
-        .card-wrapper img {
-            width: 100%;
-            display: block;
-        }
-
-        /* تحديد مكان ظهور اسم العميل وتنسيقه فوق الصورة */
-        .client-name {
-            position: absolute;
-            bottom: 25%; /* يضع الاسم بدقة فوق جملة "شركاء النجاح" */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            text-align: center;
-            font-size: 22px;
-            font-weight: bold;
-            color: #d4af37; /* لون ذهبي يتناسب مع التصميم الإضافي */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-            pointer-events: none;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .download-btn {
-            background-color: #d4af37;
-            color: #1a0510;
-            margin-top: 20px;
-        }
-
-        .download-btn:hover {
-            background-color: #f1c40f;
+            transform: translateY(-2px);
         }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
 
-    <div class="container">
+    <div class="card-input">
+        <div class="logo-placeholder">Castello | دهانات كاستيللو</div>
         <h1>تهنئة عيد الأضحى المبارك 🐑</h1>
-        <p>عملاء شركة دهانات كاستيللو الكرام، اكتب اسمك أدناه لإنشاء بطاقة التهنئة الخاصة بك:</p>
+        <p>مرحباً بكم في منصة تهاني كاستيللو. يرجى كتابة اسمكم الكريم لنقوم بتجهيز بطاقة التهنئة الخاصة بكم:</p>
         
-        <div class="input-group">
-            <input type="text" id="userName" placeholder="أدخل اسمك هنا..." maxlength="40">
-            <br>
-            <button onclick="generateGreeting()">إنشاء التهنئة</button>
-        </div>
-
-        <div class="preview-area" id="previewArea">
-            <div>
-                <div class="card-wrapper" id="greetingCard">
-                    <img src="https://i.ibb.co/v4bN3Wff/castello-eid.jpg" alt="Castello Greeting" crossorigin="anonymous">
-                    <div class="client-name" id="displayName"></div>
-                </div>
-                <button class="download-btn" onclick="downloadImage(WhatsApp Image 2026-05-26 at 6.08.10 AM)">تحميل الصورة</button>
-            </div>
-        </div>
+        <input type="text" id="clientName" placeholder="اكتب اسمك الثلاثي أو الثنائي هنا..." maxlength="40">
+        <br>
+        <button class="submit-btn" onclick="goToGreetingPage()">عرض التهنئة</button>
     </div>
 
     <script>
-        function generateGreeting() {
-            const nameInput = document.getElementById('userName').value.trim();
-            const previewArea = document.getElementById('previewArea');
-            const displayName = document.getElementById('displayName');
-
-            if (nameInput === "") {
-                alert("من فضلك أدخل اسمك أولاً!");
+        function goToGreetingPage() {
+            const name = document.getElementById('clientName').value.trim();
+            if (name === "") {
+                alert("من فضلك، قم بكتابة الاسم أولاً لتوليد التهنئة!");
                 return;
             }
-
-            // وضع اسم العميل في المكان المخصص
-            displayName.textContent = nameInput;
-            
-            // إظهار منطقة المعاينة بسلاسة
-            previewArea.style.display = 'flex';
-            previewArea.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function downloadImage() {
-            const card = document.getElementById('greetingCard');
-            
-            // تحويل الحاوية (الصورة + الاسم) إلى صورة Canvas واحدة للتحميل
-            html2canvas(card, {
-                useCORS: true, // للسماح بتحميل الصور من سيرفر خارجي دون مشاكل حماية
-                scale: 2 // لزيادة جودة الصورة عند التحميل
-            }).then(canvas => {
-                const link = document.createElement('a');
-                link.download = `كاستيللو_تهنئة_${document.getElementById('userName').value}.png`;
-                link.href = canvas.toDataURL('image/png');
-                link.click();
-            });
+            // التوجيه إلى الصفحة الثانية مع تمرير الاسم في الرابط
+            window.location.href = "greeting.html?name=" + encodeURIComponent(name);
         }
     </script>
 
