@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بطاقة التهنئة الخاصة بك - دهانات كاستيللو</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #1a0510;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* حاوية الصورة والاسم */
+        .card-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 20px auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+        }
+
+        .card-wrapper img {
+            width: 100%;
+            display: block;
+        }
+
+        /* التحكم في مكان ظهور اسم العميل على الصورة بشكل دقيق */
+        .client-name {
+            position: absolute;
+            bottom: 22%; /* لتكون في الفراغ المناسب تماماً فوق جملة شركاء النجاح */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 85%;
+            text-align: center;
+            font-size: 26px;
+            font-weight: bold;
+            color: #d4af37; /* اللون الذهبي المتناسق مع تفاصيل الصورة */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+            pointer-events: none;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .action-btns {
+            margin-top: 15px;
+        }
+
+        button {
+            font-family: 'Cairo', sans-serif;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn {
+            background-color: #d4af37;
+            color: #1a0510;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .download-btn:hover {
+            background-color: #f1c40f;
+        }
+
+        .back-btn {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .back-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="card-wrapper" id="greetingCard">
+            <img src="https://i.ibb.co/6RbyV5rN/Whats-App-Image-2026-05-26-at-6-08-10-AM.jpg" alt="Castello Eid Greeting" crossorigin="anonymous">
+            <div class="client-name" id="displayName">جاري تحميل الاسم...</div>
+        </div>
+
+        <div class="action-btns">
+            <button class="download-btn" onclick="downloadImage()">تحميل بطاقتك</button>
+            <button class="back-btn" onclick="window.location.href='index.html'">إنشاء اسم جديد</button>
+        </div>
+
+    </div>
+
+    <script>
+        // قراءة الاسم من الرابط (URL) عند فتح الصفحة
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const name = urlParams.get('name');
+            
+            if (name) {
+                document.getElementById('displayName').textContent = name;
+            } else {
+                document.getElementById('displayName').textContent = "عميل كاستيللو";
+            }
+        };
+
+        // دالة تحويل التصميم إلى صورة واحدة وتحميلها
+        function downloadImage() {
+            const card = document.getElementById('greetingCard');
+            const currentName = document.getElementById('displayName').textContent;
+            
+            html2canvas(card, {
+                useCORS: true,
+                scale: 2 // لضمان الحفاظ على الجودة العالية للصورة المرفوعة
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = `كاستيللو_تهنئة_${currentName}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        }
+    </script>
+
+</body>
+</html>
