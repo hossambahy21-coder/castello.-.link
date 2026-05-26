@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Castello - تهنئة عيد الأضحى المبارك</title>
+    <title>كاستيللو - تهنئة عيد الأضحى المبارك</title>
     <style>
         * {
             margin: 0;
@@ -12,18 +12,15 @@
         }
 
         body {
-            font-family: 'Traditional Arabic', 'Amiri', serif;
-            background: linear-gradient(135deg, #1a472a 0%, #2d5a3f 50%, #1a472a 100%);
+            font-family: 'Tahoma', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0a2540 0%, #1a3a5c 50%, #0a2540 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
-            position: relative;
-            overflow: hidden;
         }
 
-        /* Background Pattern */
         body::before {
             content: '';
             position: absolute;
@@ -31,155 +28,157 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: 
-                radial-gradient(circle at 20% 80%, rgba(255,215,0,0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255,215,0,0.1) 0%, transparent 50%),
-                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5L35 20L50 20L38 30L43 45L30 35L17 45L22 30L10 20L25 20Z' fill='none' stroke='rgba(255,215,0,0.05)' stroke-width='1'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='2' fill='rgba(255,255,255,0.03)'/%3E%3C/svg%3E");
             pointer-events: none;
         }
 
-        .greeting-container {
-            background: linear-gradient(145deg, #ffffff 0%, #f8f4e8 100%);
-            border-radius: 30px;
-            padding: 50px 40px;
-            max-width: 600px;
+        .card {
+            background: linear-gradient(180deg, #ffffff 0%, #f5f8fa 100%);
+            border-radius: 25px;
+            padding: 40px 35px;
+            max-width: 550px;
             width: 100%;
             box-shadow: 
-                0 25px 80px rgba(0,0,0,0.3),
-                0 0 0 3px #c9a227,
-                0 0 0 6px #1a472a;
+                0 20px 60px rgba(0,0,0,0.4),
+                0 0 0 4px #1a3a5c,
+                inset 0 1px 0 rgba(255,255,255,0.5);
             position: relative;
-            z-index: 1;
         }
 
-        /* Decorative corners */
-        .greeting-container::before,
-        .greeting-container::after {
-            content: '☙';
-            position: absolute;
-            font-size: 40px;
-            color: #c9a227;
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
         }
 
-        .greeting-container::before {
-            top: 15px;
-            left: 20px;
+        .logo-box {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 15px;
+            background: linear-gradient(145deg, #1a3a5c, #0d5a8c);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 36px;
+            font-weight: bold;
+            box-shadow: 0 6px 20px rgba(26, 58, 92, 0.4);
+            border: 4px solid #d4af37;
         }
 
-        .greeting-container::after {
-            bottom: 15px;
-            right: 20px;
-            transform: rotate(180deg);
+        .company-name {
+            font-size: 28px;
+            font-weight: bold;
+            color: #1a3a5c;
         }
 
-        .company-header {
+        .tagline {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .eid-section {
             text-align: center;
             margin-bottom: 30px;
         }
 
-        .company-name {
-            font-size: 36px;
-            font-weight: bold;
-            color: #1a472a;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .company-tagline {
-            color: #666;
-            font-size: 14px;
+        .eid-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
         }
 
         .eid-title {
-            text-align: center;
-            font-size: 32px;
-            color: #c9a227;
-            margin-bottom: 20px;
+            font-size: 30px;
             font-weight: bold;
+            color: #d4af37;
+            margin-bottom: 8px;
         }
 
-        .eid-icon {
-            text-align: center;
-            font-size: 60px;
-            margin-bottom: 20px;
+        .eid-subtitle {
+            font-size: 16px;
+            color: #1a3a5c;
         }
 
-        .input-section {
-            background: #f0ebe0;
+        .input-box {
+            background: linear-gradient(145deg, #e8eef3, #dde4ea);
             border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 25px;
+            padding: 25px;
+            margin-bottom: 20px;
             text-align: center;
+            border: 2px solid #c5d1dc;
         }
 
         .input-label {
-            font-size: 18px;
-            color: #1a472a;
-            margin-bottom: 15px;
+            font-size: 15px;
+            color: #1a3a5c;
+            margin-bottom: 12px;
             display: block;
+            font-weight: bold;
         }
 
         .name-input {
             width: 100%;
-            max-width: 300px;
-            padding: 15px 25px;
-            font-size: 20px;
-            border: 3px solid #1a472a;
+            max-width: 280px;
+            padding: 14px 20px;
+            font-size: 18px;
+            border: 3px solid #1a3a5c;
             border-radius: 50px;
             text-align: center;
-            font-family: inherit;
+            font-family: 'Tahoma', sans-serif;
             transition: all 0.3s ease;
             background: white;
+            color: #1a3a5c;
         }
 
         .name-input:focus {
             outline: none;
-            border-color: #c9a227;
-            box-shadow: 0 0 20px rgba(201, 162, 39, 0.3);
+            border-color: #d4af37;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
         }
 
-        .generate-btn {
+        .name-input::placeholder {
+            color: #999;
+        }
+
+        .submit-btn {
             display: block;
             width: 100%;
-            max-width: 300px;
-            margin: 20px auto 0;
-            padding: 18px 40px;
-            font-size: 20px;
-            font-family: inherit;
+            max-width: 280px;
+            margin: 15px auto 0;
+            padding: 16px 35px;
+            font-size: 18px;
+            font-family: 'Tahoma', sans-serif;
             font-weight: bold;
             color: white;
-            background: linear-gradient(145deg, #1a472a, #2d5a3f);
+            background: linear-gradient(145deg, #1a3a5c, #0d5a8c);
             border: none;
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(26, 71, 42, 0.4);
+            box-shadow: 0 6px 20px rgba(26, 58, 92, 0.4);
         }
 
-        .generate-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(26, 71, 42, 0.5);
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(26, 58, 92, 0.5);
         }
 
-        .generate-btn:active {
-            transform: translateY(0);
-        }
-
-        .greeting-message {
-            text-align: center;
-            padding: 30px;
+        .greeting-box {
             display: none;
+            text-align: center;
+            padding: 20px;
             animation: fadeIn 0.8s ease;
         }
 
-        .greeting-message.show {
+        .greeting-box.show {
             display: block;
         }
 
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(15px);
             }
             to {
                 opacity: 1;
@@ -187,139 +186,122 @@
             }
         }
 
-        .customer-name-display {
-            font-size: 42px;
+        .greeting-name {
+            font-size: 32px;
             font-weight: bold;
-            color: #1a472a;
+            color: #1a3a5c;
+            margin-bottom: 12px;
+        }
+
+        .greeting-text {
+            font-size: 18px;
+            color: #333;
+            line-height: 1.9;
             margin-bottom: 15px;
         }
 
-        .personal-message {
-            font-size: 24px;
-            color: #333;
-            line-height: 1.8;
+        .greeting-wishes {
+            font-size: 16px;
+            color: #d4af37;
+            font-weight: bold;
         }
 
-        .signature {
-            margin-top: 25px;
-            font-size: 18px;
-            color: #666;
-        }
-
-        .company-logo {
-            text-align: center;
+        .footer {
             margin-top: 30px;
             padding-top: 25px;
-            border-top: 2px dashed #ccc;
+            border-top: 2px dashed #c5d1dc;
         }
 
-        .logo-placeholder {
-            width: 120px;
-            height: 120px;
+        .footer-logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-box {
+            width: 80px;
+            height: 80px;
             margin: 0 auto;
-            background: linear-gradient(145deg, #1a472a, #2d5a3f);
-            border-radius: 20px;
+            background: linear-gradient(145deg, #1a3a5c, #0d5a8c);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #c9a227;
-            font-size: 48px;
+            color: white;
+            font-size: 32px;
             font-weight: bold;
-            box-shadow: 0 8px 25px rgba(26, 71, 42, 0.3);
+            border: 4px solid #d4af37;
+        }
+
+        .footer-name {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #1a3a5c;
         }
 
         .social-links {
-            text-align: center;
-            margin-top: 20px;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
+            margin-top: 20px;
         }
 
-        .social-link {
+        .social-btn {
             display: flex;
             align-items: center;
             gap: 8px;
             padding: 12px 25px;
-            background: white;
             border-radius: 50px;
             text-decoration: none;
-            color: #1a472a;
             font-size: 14px;
             font-weight: bold;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
         }
 
-        .social-link:hover {
+        .social-btn.website {
+            background: white;
+            color: #1a3a5c;
+            border: 3px solid #1a3a5c;
+        }
+
+        .social-btn.facebook {
+            background: #1877f2;
+            color: white;
+            border: 3px solid #1877f2;
+        }
+
+        .social-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
-        .social-link.website {
-            border: 2px solid #1a472a;
-        }
-
-        .social-link.facebook {
-            border: 2px solid #1877f2;
-            color: #1877f2;
-        }
-
-        .footer-text {
+        .copy {
             text-align: center;
-            margin-top: 25px;
-            font-size: 14px;
+            margin-top: 20px;
+            font-size: 12px;
             color: #888;
         }
 
-        /* Decorative stars */
-        .stars {
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 30px;
-            color: #c9a227;
-        }
-
-        /* Animation for button */
-        @keyframes pulse {
-            0%, 100% {
-                box-shadow: 0 8px 25px rgba(26, 71, 42, 0.4);
-            }
-            50% {
-                box-shadow: 0 8px 35px rgba(26, 71, 42, 0.6);
-            }
-        }
-
-        .generate-btn {
-            animation: pulse 2s infinite;
-        }
-
-        /* Responsive */
-        @media (max-width: 600px) {
-            .greeting-container {
+        @media (max-width: 500px) {
+            .card {
                 padding: 30px 20px;
             }
 
             .company-name {
-                font-size: 28px;
+                font-size: 22px;
             }
 
             .eid-title {
+                font-size: 24px;
+            }
+
+            .greeting-name {
                 font-size: 26px;
             }
 
-            .eid-icon {
-                font-size: 45px;
-            }
-
-            .customer-name-display {
-                font-size: 32px;
-            }
-
-            .personal-message {
-                font-size: 20px;
+            .greeting-text {
+                font-size: 16px;
             }
 
             .social-links {
@@ -330,104 +312,97 @@
     </style>
 </head>
 <body>
-    <div class="greeting-container">
-        <div class="stars">✦ ★ ✦</div>
-        
-        <div class="company-header">
-            <div class="company-name">كاستيللو Castello</div>
+    <div class="card">
+        <div class="header">
+            <div class="logo-box">ك</div>
+            <div class="company-name">كاستيللو</div>
+            <div class="tagline">معك في كل خطوة</div>
         </div>
 
-        <div class="eid-icon">🐐🌙</div>
-        
-        <h1 class="eid-title">عيد أضحى مبارك</h1>
+        <div class="eid-section">
+            <div class="eid-icon">🐐✨</div>
+            <div class="eid-title">عيد أضحى مبارك</div>
+            <div class="eid-subtitle">تقبل الله منا ومنكم صالح الأعمال</div>
+        </div>
 
-        <div class="input-section">
+        <div class="input-box" id="inputSection">
             <label class="input-label">أدخل اسمك للحصول على تهنئة خاصة:</label>
-            <input type="text" class="name-input" id="customerName" placeholder="أكتب اسمك هنا..." />
-            <button class="generate-btn" onclick="generateGreeting()">🎉 générer تهنئة</button>
+            <input type="text" class="name-input" id="custName" placeholder="أدخل اسمك هنا..." />
+            <button class="submit-btn" onclick="showGreeting()">🎴 توليد التهنئة</button>
         </div>
 
-        <div class="greeting-message" id="greetingMessage">
-            <div class="customer-name-display" id="displayName"></div>
-            <p class="personal-message" id="personalText"></p>
-            <p class="signature">من عائلة كاستيللو ❤️</p>
+        <div class="greeting-box" id="greetingBox">
+            <div class="greeting-name" id="greetingName"></div>
+            <div class="greeting-text" id="greetingText"></div>
+            <div class="greeting-wishes">كل عام وأنتم بخير ❤️</div>
         </div>
 
-        <div class="company-logo">
-            <div class="logo-placeholder">C</div>
-            <p style="margin-top: 10px; color: #1a472a; font-weight: bold;">كاستيللو Castello</p>
-        </div>
+        <div class="footer">
+            <div class="footer-logo">
+                <div class="footer-logo-box">ك</div>
+                <div class="footer-name">كاستيللو</div>
+            </div>
 
-        <div class="social-links">
-            <a href="https://castello.com" class="social-link website" target="_blank">
-                🌍 Website
-            </a>
-            <a href="https://facebook.com/castello" class="social-link facebook" target="_blank">
-                📘 Facebook
-            </a>
-        </div>
+            <div class="social-links">
+                <a href="https://castello.com" class="social-btn website" target="_blank">
+                    🌐 الموقع الإلكتروني
+                </a>
+                <a href="https://facebook.com/castello" class="social-btn facebook" target="_blank">
+                    📘 فيس بوك
+                </a>
+            </div>
 
-        <p class="footer-text">عيد أضحى مبارك | Blessed Eid al-Adha</p>
+            <div class="copy">كاستيللو © جميع الحقوق محفوظة</div>
+        </div>
     </div>
 
     <script>
-        function generateGreeting() {
-            const nameInput = document.getElementById('customerName');
+        function showGreeting() {
+            const nameInput = document.getElementById('custName');
             const name = nameInput.value.trim();
             
             if (!name) {
-                alert('من فضلك أدخل اسمك أولاً!');
+                alert('من فضلك أدخل اسمك أولاً');
                 nameInput.focus();
                 return;
             }
 
-            // Personalized messages
             const messages = [
-                `ألف孰 صحة وسلامة ${name}! 
-                يتقبل الله منك صالح الأعمال،ouz لك وعائلتك وأحبائك.
-                ${name} المحترم، نتمنى لك ولأسرتك الكريمة festive Eid充满欢乐和吉祥!`,
+                `السلام عليكم ورحمة الله وبركاته، أصدق الأمنيات لأخينا ${name} وأسرته الكريمة.
+                يتقبل الله منا ومنكم صالح الأعمال، وأرجو أن يكون هذا العيد مليئاً بالفرح والسعادة لكم ولأحبائكم.
+                وكل عام وأنتم بخير وعافية.`,
 
-                `${name} العزيز،!
-                في هذا اليوم المبارك، nous vous wishing a blessed Eid al-Adha.
-                Que cette fête apporte阳性能量和祝福 pour vous et votre famille.
-                تقبل الله منا ومنكم صالح الأعوا!`,
+                `ألف سلامة ${name} العزيز،!
+                في هذا اليوم المبارك، نتقدم بأطيب التمنيات لك ولأسرتك الكريمة.
+                نسأل الله أن يتقبل منا ومنكم الأعمال الصالحة، وأن يبارك فيكم جميعاً.
+                عيد أضحى مبارك لك ولعائلتك.`,
 
-                `Cher ${name},!
-                Eid Mubarak! Que阳性思想萦绕心头，愿真主赐予你丰盛的恩典。
-                我们祝你在这个吉祥的日子充满欢乐和family warmth!`,
-                
-                `${name} المحترم،!
-                يارب bore我们在这个美好的时刻为你祈祷。
-                Blessed Eid充满喜悦和peace，愿真主保佑你always!
-                
-                🎊🎊🎊`
+                `${name} الكريم،!
+                بأحلى التهاني بعيد الأضحى المبارك.
+                نسأل الله أن يباركليك في أهلك ومالك، وأن يجعل هذا العيد عليك فرحاً وسعادة.
+                تقبل الله منا ومنكم صالح الأعمال.
+                كل عام وأنتم بخير.`,
+
+                `عزيزنا ${name}،!
+                بأحلى التهاني بعيد الأضحى المبارك.
+                نسأل الله أن يرزقك الصحة والعافية، ويباركلك في أهلك ومالك.
+                نتقدم لك ولأسرتك الكريمة بأطيب الأمنيات.
+                تقبل الله منا ومنكم.
+                كل عام وأنتم بخير.`
             ];
 
-            // Select random message
             const randomIndex = Math.floor(Math.random() * messages.length);
             const selectedMessage = messages[randomIndex];
 
-            // Display personalization
-            document.getElementById('displayName').textContent = name + ' العزيز،';
-            document.getElementById('personalText').innerHTML = selectedMessage;
-
-            // Show message with animation
-            const greetingMessage = document.getElementById('greetingMessage');
-            greetingMessage.classList.remove('show');
-            
-            // Trigger reflow
-            void greetingMessage.offsetWidth;
-            
-            greetingMessage.classList.add('show');
-
-            // Hide input section after generation
-            document.querySelector('.input-section').style.display = 'none';
+            document.getElementById('greetingName').textContent = 'أخي ' + name + '،';
+            document.getElementById('greetingText').textContent = selectedMessage;
+            document.getElementById('greetingBox').classList.add('show');
+            document.getElementById('inputSection').style.display = 'none';
         }
 
-        // Allow Enter key to submit
-        document.getElementById('customerName').addEventListener('keypress', function(e) {
+        document.getElementById('custName').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
-                generateGreeting();
+                showGreeting();
             }
         });
     </script>
