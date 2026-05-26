@@ -3,408 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>كاستيللو - تهنئة عيد الأضحى المبارك</title>
+    <title>تهنئة عيد الأضحى المبارك - دهانات كاستيللو</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* إعدادات الخطوط والخلفية العامة */
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+        
         body {
-            font-family: 'Tahoma', 'Arial', sans-serif;
-            background: linear-gradient(135deg, #0a2540 0%, #1a3a5c 50%, #0a2540 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            font-family: 'Cairo', sans-serif;
+            background-color: #1a0510;
+            color: #ffffff;
+            margin: 0;
             padding: 20px;
-        }
-
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='2' fill='rgba(255,255,255,0.03)'/%3E%3C/svg%3E");
-            pointer-events: none;
-        }
-
-        .card {
-            background: linear-gradient(180deg, #ffffff 0%, #f5f8fa 100%);
-            border-radius: 25px;
-            padding: 40px 35px;
-            max-width: 550px;
-            width: 100%;
-            box-shadow: 
-                0 20px 60px rgba(0,0,0,0.4),
-                0 0 0 4px #1a3a5c,
-                inset 0 1px 0 rgba(255,255,255,0.5);
-            position: relative;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .logo-box {
-            width: 90px;
-            height: 90px;
-            margin: 0 auto 15px;
-            background: linear-gradient(145deg, #1a3a5c, #0d5a8c);
-            border-radius: 50%;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 36px;
-            font-weight: bold;
-            box-shadow: 0 6px 20px rgba(26, 58, 92, 0.4);
-            border: 4px solid #d4af37;
+            min-height: 100vh;
         }
 
-        .company-name {
-            font-size: 28px;
-            font-weight: bold;
-            color: #1a3a5c;
-        }
-
-        .tagline {
-            font-size: 12px;
-            color: #666;
-            margin-top: 5px;
-        }
-
-        .eid-section {
+        .container {
+            max-width: 600px;
+            width: 100%;
             text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            color: #d4af37;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+
+        p {
+            color: #e0e0e0;
+            font-size: 1.1rem;
             margin-bottom: 30px;
         }
 
-        .eid-icon {
-            font-size: 50px;
-            margin-bottom: 15px;
+        /* تنسيق صندوق الإدخال والأزرار */
+        .input-group {
+            margin-bottom: 25px;
         }
 
-        .eid-title {
-            font-size: 30px;
-            font-weight: bold;
-            color: #d4af37;
-            margin-bottom: 8px;
-        }
-
-        .eid-subtitle {
+        input[type="text"] {
+            width: 80%;
+            padding: 12px 20px;
             font-size: 16px;
-            color: #1a3a5c;
-        }
-
-        .input-box {
-            background: linear-gradient(145deg, #e8eef3, #dde4ea);
-            border-radius: 20px;
-            padding: 25px;
-            margin-bottom: 20px;
-            text-align: center;
-            border: 2px solid #c5d1dc;
-        }
-
-        .input-label {
-            font-size: 15px;
-            color: #1a3a5c;
-            margin-bottom: 12px;
-            display: block;
-            font-weight: bold;
-        }
-
-        .name-input {
-            width: 100%;
-            max-width: 280px;
-            padding: 14px 20px;
-            font-size: 18px;
-            border: 3px solid #1a3a5c;
-            border-radius: 50px;
-            text-align: center;
-            font-family: 'Tahoma', sans-serif;
-            transition: all 0.3s ease;
-            background: white;
-            color: #1a3a5c;
-        }
-
-        .name-input:focus {
-            outline: none;
-            border-color: #d4af37;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
-        }
-
-        .name-input::placeholder {
-            color: #999;
-        }
-
-        .submit-btn {
-            display: block;
-            width: 100%;
-            max-width: 280px;
-            margin: 15px auto 0;
-            padding: 16px 35px;
-            font-size: 18px;
-            font-family: 'Tahoma', sans-serif;
-            font-weight: bold;
-            color: white;
-            background: linear-gradient(145deg, #1a3a5c, #0d5a8c);
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(26, 58, 92, 0.4);
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(26, 58, 92, 0.5);
-        }
-
-        .greeting-box {
-            display: none;
-            text-align: center;
-            padding: 20px;
-            animation: fadeIn 0.8s ease;
-        }
-
-        .greeting-box.show {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(15px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .greeting-name {
-            font-size: 32px;
-            font-weight: bold;
-            color: #1a3a5c;
-            margin-bottom: 12px;
-        }
-
-        .greeting-text {
-            font-size: 18px;
+            border: 2px solid #8a1538;
+            border-radius: 25px;
+            background-color: #fff;
             color: #333;
-            line-height: 1.9;
-            margin-bottom: 15px;
-        }
-
-        .greeting-wishes {
-            font-size: 16px;
-            color: #d4af37;
-            font-weight: bold;
-        }
-
-        .footer {
-            margin-top: 30px;
-            padding-top: 25px;
-            border-top: 2px dashed #c5d1dc;
-        }
-
-        .footer-logo {
+            outline: none;
             text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .footer-logo-box {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto;
-            background: linear-gradient(145deg, #1a3a5c, #0d5a8c);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 32px;
-            font-weight: bold;
-            border: 4px solid #d4af37;
-        }
-
-        .footer-name {
-            text-align: center;
-            margin-top: 10px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #1a3a5c;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-btn {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 25px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: bold;
+            font-family: 'Cairo', sans-serif;
             transition: all 0.3s ease;
         }
 
-        .social-btn.website {
-            background: white;
-            color: #1a3a5c;
-            border: 3px solid #1a3a5c;
+        input[type="text"]:focus {
+            border-color: #d4af37;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
         }
 
-        .social-btn.facebook {
-            background: #1877f2;
+        button {
+            background-color: #8a1538;
             color: white;
-            border: 3px solid #1877f2;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background 0.3s ease;
+            font-family: 'Cairo', sans-serif;
+            box-shadow: 0 4px 15px rgba(138, 21, 56, 0.4);
         }
 
-        .social-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        button:hover {
+            background-color: #a01c43;
         }
 
-        .copy {
+        /* منطقة عرض الصورة والبطاقة */
+        .preview-area {
+            margin-top: 30px;
+            position: relative;
+            display: none; /* مخفي حتى يكتب العميل اسمه */
+            justify-content: center;
+        }
+
+        /* حاوية الصورة والاسم */
+        .card-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        .card-wrapper img {
+            width: 100%;
+            display: block;
+        }
+
+        /* تحديد مكان ظهور اسم العميل وتنسيقه فوق الصورة */
+        .client-name {
+            position: absolute;
+            bottom: 22%; /* يضع الاسم بدقة في المساحة المخصصة فوق جملة شركاء النجاح */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
             text-align: center;
-            margin-top: 20px;
-            font-size: 12px;
-            color: #888;
+            font-size: 26px;
+            font-weight: bold;
+            color: #d4af37; /* لون ذهبي متناسق مع التصميم */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+            pointer-events: none;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
-        @media (max-width: 500px) {
-            .card {
-                padding: 30px 20px;
-            }
+        .download-btn {
+            background-color: #d4af37;
+            color: #1a0510;
+            margin-top: 20px;
+        }
 
-            .company-name {
-                font-size: 22px;
-            }
-
-            .eid-title {
-                font-size: 24px;
-            }
-
-            .greeting-name {
-                font-size: 26px;
-            }
-
-            .greeting-text {
-                font-size: 16px;
-            }
-
-            .social-links {
-                flex-direction: column;
-                align-items: center;
-            }
+        .download-btn:hover {
+            background-color: #f1c40f;
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
-    <div class="card">
-        <div class="header">
-            <div class="logo-box">ك</div>
-            <div class="company-name">كاستيللو</div>
-            <div class="tagline">معك في كل خطوة</div>
+
+    <div class="container">
+        <h1>تهنئة عيد الأضحى المبارك 🐑</h1>
+        <p>عملاء شركة دهانات كاستيللو الكرام، اكتب اسمك أدناه لإنشاء بطاقة التهنئة الخاصة بك:</p>
+        
+        <div class="input-group">
+            <input type="text" id="userName" placeholder="أدخل اسمك هنا..." maxlength="40">
+            <br>
+            <button onclick="generateGreeting()">إنشاء التهنئة</button>
         </div>
 
-        <div class="eid-section">
-            <div class="eid-icon">🐐✨</div>
-            <div class="eid-title">عيد أضحى مبارك</div>
-            <div class="eid-subtitle">تقبل الله منا ومنكم صالح الأعمال</div>
-        </div>
-
-        <div class="input-box" id="inputSection">
-            <label class="input-label">أدخل اسمك للحصول على تهنئة خاصة:</label>
-            <input type="text" class="name-input" id="custName" placeholder="أدخل اسمك هنا..." />
-            <button class="submit-btn" onclick="showGreeting()">🎴 توليد التهنئة</button>
-        </div>
-
-        <div class="greeting-box" id="greetingBox">
-            <div class="greeting-name" id="greetingName"></div>
-            <div class="greeting-text" id="greetingText"></div>
-            <div class="greeting-wishes">كل عام وأنتم بخير ❤️</div>
-        </div>
-
-        <div class="footer">
-            <div class="footer-logo">
-                <div class="footer-logo-box">ك</div>
-                <div class="footer-name">كاستيللو</div>
-            </div>
-
-            <div class="social-links">
-                <a href="https://castello.com" class="social-btn website" target="_blank">
-                    🌐 الموقع الإلكتروني
-                </a>
-                <a href="https://facebook.com/castello" class="social-btn facebook" target="_blank">
-                    📘 فيس بوك
-                </a>
-            </div>
-
-            <div class="copy">كاستيللو © جميع الحقوق محفوظة</div>
-        </div>
-    </div>
-
-    <script>
-        function showGreeting() {
-            const nameInput = document.getElementById('custName');
-            const name = nameInput.value.trim();
-            
-            if (!name) {
-                alert('من فضلك أدخل اسمك أولاً');
-                nameInput.focus();
-                return;
-            }
-
-            const messages = [
-                `السلام عليكم ورحمة الله وبركاته، أصدق الأمنيات لأخينا ${name} وأسرته الكريمة.
-                يتقبل الله منا ومنكم صالح الأعمال، وأرجو أن يكون هذا العيد مليئاً بالفرح والسعادة لكم ولأحبائكم.
-                وكل عام وأنتم بخير وعافية.`,
-
-                `ألف سلامة ${name} العزيز،!
-                في هذا اليوم المبارك، نتقدم بأطيب التمنيات لك ولأسرتك الكريمة.
-                نسأل الله أن يتقبل منا ومنكم الأعمال الصالحة، وأن يبارك فيكم جميعاً.
-                عيد أضحى مبارك لك ولعائلتك.`,
-
-                `${name} الكريم،!
-                بأحلى التهاني بعيد الأضحى المبارك.
-                نسأل الله أن يباركليك في أهلك ومالك، وأن يجعل هذا العيد عليك فرحاً وسعادة.
-                تقبل الله منا ومنكم صالح الأعمال.
-                كل عام وأنتم بخير.`,
-
-                `عزيزنا ${name}،!
-                بأحلى التهاني بعيد الأضحى المبارك.
-                نسأل الله أن يرزقك الصحة والعافية، ويباركلك في أهلك ومالك.
-                نتقدم لك ولأسرتك الكريمة بأطيب الأمنيات.
-                تقبل الله منا ومنكم.
-                كل عام وأنتم بخير.`
-            ];
-
-            const randomIndex = Math.floor(Math.random() * messages.length);
-            const selectedMessage = messages[randomIndex];
-
-            document.getElementById('greetingName').textContent = 'أخي ' + name + '،';
-            document.getElementById('greetingText').textContent = selectedMessage;
-            document.getElementById('greetingBox').classList.add('show');
-            document.getElementById('inputSection').style.display = 'none';
-        }
-
-        document.getElementById('custName').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                showGreeting();
-            }
-        });
-    </script>
-</body>
-</html>
+        <div class="preview-area" id="previewArea">
