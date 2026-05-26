@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تهنئة عيد الأضحى - دهانات كاستيللو</title>
+    <title>إنشاء تهنئة عيد الأضحى - دهانات كاستيللو</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
         
@@ -31,7 +31,7 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .logo-placeholder {
+        .logo-text {
             color: #d4af37;
             font-size: 24px;
             font-weight: bold;
@@ -91,20 +91,20 @@
 <body>
 
     <div class="card-input">
-        <div class="logo-placeholder">Castello | دهانات كاستيللو</div>
+        <div class="logo-text">Castello | دهانات كاستيللو</div>
         <h1>تهنئة عيد الأضحى المبارك 🐑</h1>
-        <p>مرحباً بكم في منصة تهاني كاستيللو. يرجى كتابة اسمكم الكريم لنقوم بتجهيز بطاقة التهنئة الخاصة بكم:</p>
+        <p>مرحباً بكم في منصة تهاني كاستيللو. يرجى كتابة اسمكم الكريم لنقوم بتجهيز بطاقة التهنئة الخاصة بكم فوراً:</p>
         
         <input type="text" id="clientName" placeholder="اكتب اسمك الثلاثي أو الثنائي هنا..." maxlength="40">
         <br>
-        <button class="submit-btn" onclick="goToGreetingPage()">عرض التهنئة</button>
+        <button class="submit-btn" onclick="generateAndGo()">تجهيز الصورة</button>
     </div>
 
     <script>
-        function goToGreetingPage() {
+        function generateAndGo() {
             const name = document.getElementById('clientName').value.trim();
             if (name === "") {
-                alert("من فضلك، قم بكتابة الاسم أولاً لتوليد التهنئة!");
+                alert("من فضلك، قم بكتابة الاسم أولاً!");
                 return;
             }
             // التوجيه إلى الصفحة الثانية مع تمرير الاسم في الرابط
